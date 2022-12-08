@@ -1,4 +1,4 @@
-# Blockchain valley home (v1)
+# Blockchain valley home (v2)
 
 This project is source code of Blockchain valley home version 1
 
