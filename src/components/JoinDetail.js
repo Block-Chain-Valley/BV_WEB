@@ -100,6 +100,7 @@ const JoinDeatil = ({ setObserver, callback }) => {
     setObserver(circle3.current, someCallback3);
     setObserver(circle4.current, someCallback4);
     setObserver(circle5.current, someCallback5);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

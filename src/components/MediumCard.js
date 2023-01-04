@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import XMLParser from 'react-xml-parser';
-import styled from 'styled-components';
-import NewCarousel from './NewCarousel';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import XMLParser from "react-xml-parser";
+import styled from "styled-components";
+import NewCarousel from "./NewCarousel";
 
 const CardBox = styled.div`
   background-color: white;
@@ -48,8 +48,8 @@ function MediumCard() {
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
-  const URL = '/feed/blockchain-valley';
+  const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
+  const URL = "/feed/blockchain-valley";
 
   function parseStr(dataSet) {
     const dataArr = new XMLParser().parseFromString(dataSet).children;
@@ -63,15 +63,15 @@ function MediumCard() {
       let date = dataArr[0].children[i].children[authorIndex + 1].value;
       const content = dataArr[0].children[i].children[authorIndex + 3].value;
       const url = dataArr[0].children[i].children[1].value;
-      date.replace(',', '');
-      date = date.split(' ');
+      date.replace(",", "");
+      date = date.split(" ");
       date.shift();
       date.length = 3;
       date = date.reverse();
-      const published = date.join(' ');
+      const published = date.join(" ");
       const newStartContent = content.indexOf('<img alt="" src="');
       const newContent = content.substr(newStartContent + 17);
-      const imgIndex = newContent.indexOf('/>');
+      const imgIndex = newContent.indexOf("/>");
       const imgSrc = newContent.substr(0, imgIndex - 2);
       oneData.title = title.substr(0, title.length - 2);
       oneData.author = author.substr(0, author.length - 2);
@@ -99,16 +99,21 @@ function MediumCard() {
       setLoading(false);
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) return <div>아직 로딩중이에여..기다려주세여</div>;
   if (error) return <div>오잉 에러가 발생해써요..🥺</div>;
   if (!info) return null;
   const cards = info.map((oneInfo, index) => (
-    <CardBox key={index} onClick={() => window.open(oneInfo.url, '_blank')}>
+    <CardBox key={index} onClick={() => window.open(oneInfo.url, "_blank")}>
       <CardImg src={oneInfo.img} alt="이미지 없음"></CardImg>
       <Detail>
-        <Title>{oneInfo.title.length < 16 ? oneInfo.title : `${oneInfo.title.slice(0, 15)} ...`}</Title>
+        <Title>
+          {oneInfo.title.length < 16
+            ? oneInfo.title
+            : `${oneInfo.title.slice(0, 15)} ...`}
+        </Title>
         <Author>{oneInfo.author}</Author>
         <Date>{oneInfo.published}</Date>
       </Detail>

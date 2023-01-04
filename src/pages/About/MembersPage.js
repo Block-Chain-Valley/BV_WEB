@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
-import githubLogo from '../../assets/github.svg';
-import mediumLogo from '../../assets/medium.svg';
-import instagramLogo from '../../assets/instagram.svg';
-import loading from '../../assets/loadingAni2.svg';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import axios from "axios";
+import githubLogo from "../../assets/github.svg";
+import mediumLogo from "../../assets/medium.svg";
+import instagramLogo from "../../assets/instagram.svg";
+import loading from "../../assets/loadingAni2.svg";
 
 const generationCnt = 2;
 const generations = [];
@@ -13,10 +13,10 @@ for (let i = 1; i <= generationCnt; i++) {
 }
 
 const MembersPage = () => {
-  const [selectedGeneration, setSelectedGenereation] = useState('1');
+  const [selectedGeneration, setSelectedGenereation] = useState("1");
   const [nodeData, setNodeData] = useState(-1);
 
-  const generationClickHandler = event => {
+  const generationClickHandler = (event) => {
     setSelectedGenereation(event.target.id);
   };
 
@@ -24,20 +24,23 @@ const MembersPage = () => {
     fetchData(parseInt(selectedGeneration, 10));
   };
 
-  const fetchData = gen =>
+  const fetchData = (gen) =>
     axios
-      .get(`https://bv-main-db-server.herokuapp.com/nodeInfo?generation=${gen}&image=y`)
-      .then(res => {
+      .get(
+        `https://bv-main-db-server.herokuapp.com/nodeInfo?generation=${gen}&image=y`
+      )
+      .then((res) => {
         setNodeData(res.data);
         console.log(res.data);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
 
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGeneration]);
 
-  const instagramIdToLink = id => {
+  const instagramIdToLink = (id) => {
     const link = `https://www.instagram.com/${id.substr(1)}/`;
     return link;
   };
@@ -45,12 +48,15 @@ const MembersPage = () => {
   return (
     <Container>
       <NavList>
-        {generations.map(el => (
+        {generations.map((el) => (
           <NavItem
             key={el}
             id={el}
-            className={el === parseInt(selectedGeneration, 10) ? 'isActive' : ''}
-            onClick={generationClickHandler}>
+            className={
+              el === parseInt(selectedGeneration, 10) ? "isActive" : ""
+            }
+            onClick={generationClickHandler}
+          >
             {`${el}기`}
           </NavItem>
         ))}
@@ -69,18 +75,29 @@ const MembersPage = () => {
                 <NameContainer>
                   <NameTxt>{node.NAME}</NameTxt>
                   <InfoTxt>
-                    {node.GENERATION}기 | {node.ROLE === 'dev' ? '개발팀' : '리서치팀'}
+                    {node.GENERATION}기 |{" "}
+                    {node.ROLE === "dev" ? "개발팀" : "리서치팀"}
                   </InfoTxt>
                 </NameContainer>
-                {node.EMAIL === '' ? null : <ContactlTxt>{node.EMAIL}</ContactlTxt>}
+                {node.EMAIL === "" ? null : (
+                  <ContactlTxt>{node.EMAIL}</ContactlTxt>
+                )}
                 <LogoContainer>
-                  {node.GITHUB === undefined || node.GITHUB === '' ? null : (
-                    <FollowUsLogoLink rel="noopener noreferrer" target="_blank" href={node.GITHUB}>
+                  {node.GITHUB === undefined || node.GITHUB === "" ? null : (
+                    <FollowUsLogoLink
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href={node.GITHUB}
+                    >
                       <Logo src={githubLogo} />
                     </FollowUsLogoLink>
                   )}
-                  {node.MIDIUM === undefined || node.MIDIUM === '' ? null : (
-                    <FollowUsLogoLink rel="noopener noreferrer" target="_blank" href={node.MIDIUM}>
+                  {node.MIDIUM === undefined || node.MIDIUM === "" ? null : (
+                    <FollowUsLogoLink
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href={node.MIDIUM}
+                    >
                       <Logo
                         src={mediumLogo}
                         onClick={() => {
@@ -89,11 +106,13 @@ const MembersPage = () => {
                       />
                     </FollowUsLogoLink>
                   )}
-                  {node.INSTAGRAM === undefined || node.INSTAGRAM === '' ? null : (
+                  {node.INSTAGRAM === undefined ||
+                  node.INSTAGRAM === "" ? null : (
                     <FollowUsLogoLink
                       rel="noopener noreferrer"
                       target="_blank"
-                      href={instagramIdToLink(node.INSTAGRAM)}>
+                      href={instagramIdToLink(node.INSTAGRAM)}
+                    >
                       <Logo src={instagramLogo} />
                     </FollowUsLogoLink>
                   )}
