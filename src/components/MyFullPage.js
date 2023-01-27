@@ -78,19 +78,21 @@ const Name = styled.p`
 `
 const Purple = styled.div`
     position: absolute;
-    left: -700px;
+    left: -750px;
     top: -600px;
-    background: rgba(24, 75, 255, 0.4);
+    background: linear-gradient(180deg, rgba(0, 194, 255, 0) 0%, #a838ff 96.35%);
     filter: blur(124.147px);
     width: 989.45px;
     height: 1132.22px;
     transform: rotate(-180deg);
     border-radius: 100%;
+    opacity: 0.7;
 `
 const Green = styled.div`
     position: absolute;
-    right: -600px;
+    right: -650px;
     bottom: -700px;
+    opacity: 0.5;
 
     border-radius: 100%;
     width: 989.45px;
