@@ -1,221 +1,153 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import MediumCard from "./MediumCard";
-import FirstImg from "../assets/page-first.svg";
-import FirstIcon from "../assets/Bitcoin-1.svg";
-import SecondIcon from "../assets/Etherium-2 copy 1.svg";
-import Footer from "./Footer";
-import Partners from "../assets/Frame 124.svg";
-import "./btn.css";
+import React, {useState, useEffect} from 'react'
+import styled from 'styled-components'
+// import {NavLink} from 'react-router-dom'
+import MediumCard from './MediumCard'
+import FirstImg from '../assets/page-first.svg'
+import './btn.css'
+import MainSecond from './pc/MainSecond'
+import Footer from '../components/Footer'
 
 const Fullimg = styled.img`
-  width: 100%;
-  opacity: 0.6;
-  height: 100vh;
-  object-fit: cover;
-  /* height: ${(props) => `${props.height}px`}; */
-  animation: fadein 4s;
-  -moz-animation: fadein 4s; /* Firefox */
-  -webkit-animation: fadein 4s; /* Safari and Chrome */
-  -o-animation: fadein 4s; /* Opera */
-  @-webkit-keyframes fadein {
-    /* Safari and Chrome */
-    from {
-      opacity: 0;
+    width: 100%;
+    opacity: 0.6;
+    height: 100vh;
+    object-fit: cover;
+    /* height: ${(props) => `${props.height}px`}; */
+    animation: fadein 4s;
+    -moz-animation: fadein 4s; /* Firefox */
+    -webkit-animation: fadein 4s; /* Safari and Chrome */
+    -o-animation: fadein 4s; /* Opera */
+    @-webkit-keyframes fadein {
+        /* Safari and Chrome */
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 0.6;
+        }
     }
-    to {
-      opacity: 0.6;
+    @keyframes fadein {
+        /* Safari and Chrome */
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 0.6;
+        }
     }
-  }
-  @keyframes fadein {
-    /* Safari and Chrome */
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 0.6;
-    }
-  }
-`;
-
-const LastContent = styled.div`
-  height: 100vh;
-`;
-
-const ExceptFooter = styled.div`
-  height: ${(props) => `${props.height}px`};
-  padding-top: 60px;
-`;
-
-const JoinTitle = styled.p`
-  font-size: 2rem;
-  font-weight: 600;
-`;
-
-const JoinText = styled.div`
-  text-align: center;
-  margin-top: 2vh;
-`;
-
-const JoinDetail = styled.p`
-  font-size: 1.3rem;
-  font-weight: 300;
-  margin-bottom: 10px;
-`;
-
-const SponsorBox = styled.img`
-  width: 60%;
-  margin: 7vh auto;
-`;
-
-const BoldDetail = styled.p`
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-`;
-
-const Sponsor = styled.div`
-  margin: 2vh 11.7vw;
-  display: flex;
-  flex-direction: column;
-  height: 30vh;
-`;
-
-const SecondTotal = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 1vh 11.7vw;
-  justify-content: center;
-  height: 100vh;
-`;
-
-const SecondBox = styled.div`
-  display: flex;
-  margin: 5vh auto;
-  width: 76.6vw;
-  /* background-color: green; */
-  align-items: center;
-`;
-
-const MediumTitle = styled.p`
-  margin-left: 11.9vw;
-  font-size: 2rem;
-  font-weight: 600;
-`;
-
-const Icon = styled.img`
-  width: 15vw;
-`;
-
-const Title = styled.p`
-  font-size: 2.3rem;
-  font-weight: 800;
-  margin-bottom: 3vh;
-`;
-const Detail = styled.p`
-  font-size: 1.4rem;
-  font-weight: 200;
-  line-height: 35px;
-`;
-const Text = styled.div`
-  padding-left: 5vw;
-  border-left: 2px solid white;
-  margin-left: 3vw;
-`;
+`
 
 const Middle = styled.p`
-  font-size: 45px;
-  font-weight: 600;
-  text-shadow: 0px 0px 50px rgba(6, 61, 285, 0.8);
-  margin-bottom: 3vh;
-  @media all and (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-`;
+    font-size: 45px;
+    font-weight: 600;
+    text-shadow: 0px 0px 50px rgba(6, 61, 285, 0.8);
+    margin-bottom: 3vh;
+    @media all and (max-width: 768px) {
+        font-size: 1.5rem;
+    }
+`
 
 const PBox = styled.div`
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`
 
 const ImgBox = styled.div`
-  position: relative;
-`;
-
-const GoToJoin = styled.div`
-  /* background-color: green; */
-  margin-left: 11.7vw;
-  margin-right: 11.7vw;
-  height: 35vh;
-`;
-
-const Text2 = styled.div`
-  padding-right: 5vw;
-  border-right: 2px solid white;
-  margin-right: 1vw;
-  padding-left: 4vw;
-`;
-
-const Third = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  margin-top: 5vh;
-`;
+    position: relative;
+`
 
 const SlideBox = styled.div`
-  width: ${(props) => `${props.width}px`};
-  height: ${(props) => `${props.height}px`};
-  overflow: hidden;
-`;
-// const Lineimg = styled.div`
-//   height: 10%;
-// `;
+    width: ${(props) => `${props.width}px`};
+    height: ${(props) => `${props.height}px`};
+    overflow: hidden;
+`
+
+const Low = styled.div`
+    overflow: hidden;
+    position: relative;
+`
+const Name = styled.p`
+    margin-top: 130px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 32px;
+`
+const Purple = styled.div`
+    position: absolute;
+    left: -700px;
+    top: -600px;
+    background: rgba(24, 75, 255, 0.4);
+    filter: blur(124.147px);
+    width: 989.45px;
+    height: 1132.22px;
+    transform: rotate(-180deg);
+    border-radius: 100%;
+`
+const Green = styled.div`
+    position: absolute;
+    right: -600px;
+    bottom: -700px;
+
+    border-radius: 100%;
+    width: 989.45px;
+    height: 1132.22px;
+    background: linear-gradient(180deg, #173b80 0%, #11573e 100%);
+    filter: blur(100px);
+    transform: matrix(1, 0, 0, -1, 0, 0);
+`
 
 function MyFullPage() {
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-  const handleResize = () => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  };
-  // eslint-disable-next-line no-unused-vars
-  const [scrollY, setScrollY] = useState(0);
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    setScrollY(scrollPosition);
-  };
+    const [windowSize, setWindowSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    })
+    const handleResize = () => {
+        setWindowSize({
+            width: window.innerWidth,
+            height: window.innerHeight,
+        })
+    }
+    // eslint-disable-next-line no-unused-vars
+    const [scrollY, setScrollY] = useState(0)
+    const handleScroll = () => {
+        const scrollPosition = window.scrollY
+        setScrollY(scrollPosition)
+    }
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
+    useEffect(() => {
+        window.addEventListener('resize', handleResize)
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+            window.removeEventListener('scroll', handleScroll)
+        }
+    })
 
-  return (
-    <>
-      <SlideBox height={windowSize.height} width={windowSize.width}>
-        <ImgBox>
-          <Fullimg src={FirstImg} alt="first img"></Fullimg>
-        </ImgBox>
-        <PBox>
-          <Middle>다가올 WEB 3.0의 미래를 함께</Middle>
-          <Middle>만들어나갈 혁신가들의 공간</Middle>
-        </PBox>
-      </SlideBox>
-      <SecondTotal>
+    return (
+        <>
+            <SlideBox height={windowSize.height} width={windowSize.width}>
+                <ImgBox>
+                    <Fullimg src={FirstImg} alt="first img"></Fullimg>
+                </ImgBox>
+                <PBox>
+                    <Middle>다가올 WEB 3.0의 미래를 함께</Middle>
+                    <Middle>만들어나갈 혁신가들의 공간</Middle>
+                </PBox>
+            </SlideBox>
+            <MainSecond />
+            <Low>
+                <Purple></Purple>
+                <Green></Green>
+                <Name>최근 블로그 글</Name>
+                <MediumCard />
+            </Low>
+            <Footer />
+
+            {/* <SecondTotal>
         <SecondBox>
           <div>
             <Icon src={FirstIcon} alt="icon 1"></Icon>
@@ -267,11 +199,11 @@ function MyFullPage() {
             <JoinTitle>Our Partners</JoinTitle>
             <SponsorBox src={Partners}></SponsorBox>
           </Sponsor>
-        </ExceptFooter>
-        <Footer />
-      </LastContent>
-    </>
-  );
+        </ExceptFooter> */}
+            {/* <Footer />
+      </LastContent> */}
+        </>
+    )
 }
 
-export default MyFullPage;
+export default MyFullPage
