@@ -5,7 +5,7 @@ import Discord from "../../assets/discordwhite.svg";
 import Insta from "../../assets/instagramWhite.svg";
 import Medium from "../../assets/mediumWhite.svg";
 import Telegram from "../../assets/telegramWhite.svg";
-import RecentMedium from "../RecentMedium";
+// import RecentMedium from "../RecentMedium";
 import MediumCard from "../MediumCard";
 
 const Blog = styled.div`
@@ -53,28 +53,28 @@ const SidbarIcon = styled.div`
     width: 35px;
   }
 `;
-const Blogs = styled.div`
-  /* width: 100%; */
-  margin-left: 20px;
-  overflow: scroll;
-  /* white-space: nowrap; */
-  height: 240px;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* 끝에서 바운스 되도록*/
-  scroll-snap-type: x mandatory;
-  /* scrollbar-width: 0; */
-  div {
-    margin-right: 20px;
-    flex: 0 0 auto;
-    width: 230px;
-    height: 230px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-  }
-`;
+// const Blogs = styled.div`
+//   /* width: 100%; */
+//   margin-left: 20px;
+//   overflow: scroll;
+//   /* white-space: nowrap; */
+//   height: 240px;
+//   display: flex;
+//   flex-wrap: nowrap;
+//   flex-direction: row;
+//   overflow-x: auto;
+//   -webkit-overflow-scrolling: touch; /* 끝에서 바운스 되도록*/
+//   scroll-snap-type: x mandatory;
+//   /* scrollbar-width: 0; */
+//   div {
+//     margin-right: 20px;
+//     flex: 0 0 auto;
+//     width: 230px;
+//     height: 230px;
+//     background: rgba(255, 255, 255, 0.2);
+//     border-radius: 8px;
+//   }
+// `;
 
 function MobileMainLast() {
   return (
@@ -87,14 +87,14 @@ function MobileMainLast() {
         <Title>Partners</Title>
         <Partner>
           <Box>
-            <img src={Philo} />
+            <img src={Philo} alt="_" />
             <Name>
               <p>Philosophia</p>
               <p>Ventures</p>
             </Name>
           </Box>
           <Box>
-            <img src={Korea} />
+            <img src={Korea} alt="_" />
             <Name>
               <p>Korea</p>
               <p>University</p>
@@ -105,22 +105,22 @@ function MobileMainLast() {
       <SidebarFooter>
         <SidbarIcon>
           <a href="https://discord.gg/RFAWQz8S3J">
-            <img src={Discord} />
+            <img src={Discord} alt="_" />
           </a>
         </SidbarIcon>
         <SidbarIcon>
           <a href="https://www.instagram.com/blockchain__valley/">
-            <img src={Insta} />
+            <img src={Insta} alt="_" />
           </a>
         </SidbarIcon>
         <SidbarIcon>
           <a href="https://telegram.org/">
-            <img src={Telegram} />
+            <img src={Telegram} alt="_" />
           </a>
         </SidbarIcon>
         <SidbarIcon>
           <a href="https://medium.com/blockchain-valley">
-            <img src={Medium} />
+            <img src={Medium} alt="_" />
           </a>
         </SidbarIcon>
       </SidebarFooter>

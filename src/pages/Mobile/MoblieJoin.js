@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Discord from "../../assets/discordwhite.svg";
-import Insta from "../../assets/instagramWhite.svg";
-import Medium from "../../assets/mediumWhite.svg";
-import Telegram from "../../assets/telegramWhite.svg";
+// import Discord from "../../assets/discordwhite.svg";
+// import Insta from "../../assets/instagramWhite.svg";
+// import Medium from "../../assets/mediumWhite.svg";
+// import Telegram from "../../assets/telegramWhite.svg";
 
 const Total = styled.div`
   margin-top: 35vh;
@@ -29,19 +29,19 @@ const Small = styled.p`
   color: white;
   margin-bottom: 8px;
 `;
-const SidebarFooter = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 30vh;
-`;
-const SidbarIcon = styled.div`
-  img {
-    width: 35px;
-  }
-`;
+// const SidebarFooter = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-around;
+//   margin-left: 40px;
+//   margin-right: 40px;
+//   margin-top: 30vh;
+// `;
+// const SidbarIcon = styled.div`
+//   img {
+//     width: 35px;
+//   }
+// `;
 
 function MobileJoin() {
   return (

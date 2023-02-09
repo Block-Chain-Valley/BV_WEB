@@ -179,22 +179,22 @@ const Header = () => {
             <SidebarFooter>
               <SidbarIcon>
                 <a href="https://discord.gg/RFAWQz8S3J">
-                  <img src={Discord} />
+                  <img src={Discord} alt="icon" />
                 </a>
               </SidbarIcon>
               <SidbarIcon>
                 <a href="https://www.instagram.com/blockchain__valley/">
-                  <img src={Insta} />
+                  <img src={Insta} alt="icon" />
                 </a>
               </SidbarIcon>
               <SidbarIcon>
                 <a href="https://telegram.org/">
-                  <img src={Telegram} />
+                  <img src={Telegram} alt="icon" />
                 </a>
               </SidbarIcon>
               <SidbarIcon>
                 <a href="https://medium.com/blockchain-valley">
-                  <img src={Medium} />
+                  <img src={Medium} alt="icon" />
                 </a>
               </SidbarIcon>
             </SidebarFooter>
